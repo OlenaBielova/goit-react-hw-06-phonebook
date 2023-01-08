@@ -1,10 +1,8 @@
-
 import { ContactForm } from '../Form/Form';
 import { Filter } from '../Filter/Filter';
-import {ContactList} from '../ContactList/ContactList';
+import { ContactList } from '../ContactList/ContactList';
 import { Container } from './App.styled';
-import PropTypes from 'prop-types';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export function App() {
   const contacts = useSelector(state => state.contacts.contacts);
@@ -17,7 +15,6 @@ export function App() {
   // useEffect(() => {
   //   localStorage.setItem('contacts', JSON.stringify(contacts));
   // }, [contacts]);
-
 
   return (
     <Container>
@@ -36,10 +33,3 @@ export function App() {
   );
 }
 
-App.propTypes = {
-  data: PropTypes.exact({
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-  }),
-};

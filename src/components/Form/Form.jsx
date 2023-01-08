@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Formik, ErrorMessage } from 'formik';
-// import * as yup from 'yup';
 import 'yup-phone-lite';
 import {
   NewContactForm,
@@ -12,18 +10,11 @@ import {
 } from './Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
+// import * as yup from 'yup';
 
 export function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.contacts);
-
-  // const schema = yup.object().shape({
-  //   name: yup.string().required('Name is required'),
-  //   number: yup
-  //     .string()
-  //     .phone('UA', 'Please enter a valid phone number')
-  //     .required('A phone number is required'),
-  // });
 
   const initialValues = {
     name: '',
@@ -31,13 +22,20 @@ export function ContactForm() {
     id: '',
   };
 
+    // const schema = yup.object().shape({
+  //   name: yup.string().required('Name is required'),
+  //   number: yup
+  //     .string()
+  //     .phone('UA', 'Please enter a valid phone number')
+  //     .required('A phone number is required'),
+  // });
+
   const handleSubmit = (contact, { resetForm }) => {
     const normalizedName = contact.name.toLowerCase();
-    console.log(normalizedName);
     const repeatedNameList = contacts.filter(
       contact => contact.name.toLowerCase() === normalizedName
     );
-    console.log(repeatedNameList);
+    
     if (repeatedNameList.length === 0) {
       dispatch(addContact(contact));
       resetForm();
@@ -90,7 +88,3 @@ export function ContactForm() {
     </Formik>
   );
 }
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func,
-};

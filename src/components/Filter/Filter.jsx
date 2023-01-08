@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { SearchByName, SearchInput } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from 'redux/contactsSlice';
@@ -21,7 +20,3 @@ export const Filter = () => {
   );
 };
 
-Filter.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-};
